@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Mini Project Screening Format - GYAN ANALYTICS</title>
+<style>
+  @page {
+    size: A4 portrait;
+    margin: 18mm 20mm 18mm 20mm;
+  }
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Times New Roman', Times, serif;
+    color: #000;
+    line-height: 1.35;
+    background: #fff;
+    font-size: 11.5pt;
+  }
+
+  .header-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+    border: 1.5px solid #000;
+  }
+  .header-table td {
+    text-align: center;
+    padding: 5px 8px;
+    font-weight: bold;
+    font-size: 12.5pt;
+    border: 1px solid #000;
+    line-height: 1.25;
+  }
+  .header-table tr:first-child td {
+    font-size: 13.5pt;
+    padding-top: 7px;
+  }
+
+  .doc-title {
+    text-align: center;
+    font-size: 13pt;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-bottom: 12px;
+  }
+
+  .team-id-line {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 8px;
+  }
+
+  .section-label {
+    font-size: 12pt;
+    font-weight: bold;
+    margin-bottom: 6px;
+  }
+
+  .team-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 14px;
+    border: 1.5px solid #000;
+  }
+  .team-table th, .team-table td {
+    border: 1px solid #000;
+    padding: 5px 12px;
+    font-size: 11pt;
+  }
+  .team-table th {
+    background-color: #f2f2f2;
+    text-align: left;
+    font-weight: bold;
+  }
+  .team-table td:first-child {
+    width: 35%;
+    font-weight: bold;
+  }
+
+  .project-details-title {
+    font-size: 12pt;
+    font-weight: bold;
+    text-decoration: underline;
+    margin-top: 6px;
+    margin-bottom: 8px;
+  }
+
+  .detail-block {
+    margin-bottom: 9px;
+  }
+  .detail-title {
+    font-weight: bold;
+    display: inline;
+  }
+  .detail-content {
+    display: inline;
+  }
+
+  .sub-heading {
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 4px;
+    margin-bottom: 2px;
+  }
+
+  .bullet-list {
+    margin-left: 20px;
+    margin-top: 3px;
+    margin-bottom: 3px;
+  }
+  .bullet-list li {
+    margin-bottom: 2px;
+  }
+
+  .signature-section {
+    margin-top: 26px;
+    page-break-inside: avoid;
+  }
+  .sig-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 35px;
+    font-size: 11pt;
+    font-weight: bold;
+  }
+</style>
+</head>
+<body>
+
+  <!-- HEADER TABLE -->
+  <table class="header-table">
+    <tr>
+      <td>JSS ACADEMY OF TECHNICAL EDUCATION, BENGALURU</td>
+    </tr>
+    <tr>
+      <td>DEPARTMENT OF COMPUTER SCIENCE AND ENGINEERING</td>
+    </tr>
+    <tr>
+      <td>MINI PROJECT- BCS586-V SEMESTER</td>
+    </tr>
+    <tr>
+      <td>ACADEMIC YEAR 2026-2027</td>
+    </tr>
+  </table>
+
+  <!-- DOCUMENT TITLE -->
+  <div class="doc-title">Mini Project Problem Statement Approval</div>
+
+  <!-- TEAM ID -->
+  <div class="team-id-line">Team ID: MPR_CS_26_T7</div>
+
+  <!-- TEAM DETAILS -->
+  <div class="section-label">Team Details:</div>
+  <table class="team-table">
+    <thead>
+      <tr>
+        <th>USN</th>
+        <th>NAME</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>1JS24CS059</td>
+        <td>GAGAN G</td>
+      </tr>
+      <tr>
+        <td>1JS24CS054</td>
+        <td>ESHA KUMARA</td>
+      </tr>
+      <tr>
+        <td>1JS24CS055</td>
+        <td>G BHARATHKUMAR</td>
+      </tr>
+      <tr>
+        <td>1JS24CS076</td>
+        <td>JOSHI ATHARVA CHANDRAKANT</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- PROJECT DETAILS -->
+  <div class="project-details-title">Project Details</div>
+
+  <!-- Title -->
+  <div class="detail-block">
+    <span class="detail-title">• Title of the Project:</span>
+    <span class="detail-content" style="font-weight: bold;"> GYAN ANALYTICS</span>
+  </div>
+
+  <!-- Domain -->
+  <div class="detail-block">
+    <span class="detail-title">• Project Domain/Area:</span>
+    <span class="detail-content"> Business Intelligence (BI), Data Analytics & Visualization, Full-Stack Web Development</span>
+  </div>
+
+  <!-- Problem Statement & Objectives -->
+  <div class="detail-block">
+    <div class="detail-title">• Problem Statement & Objectives:</div>
+    <div style="margin-left: 14px; margin-top: 4px;">
+      <div class="sub-heading">Problem Statement:</div>
+      <p style="text-align: justify; margin-bottom: 5px;">
+        Commercial Business Intelligence (BI) platforms (such as Microsoft Power BI, Tableau, and Zoho Analytics) are predominantly proprietary, expensive, cloud-tethered, and enforce recurring per-user licensing fees. Organizations, academic institutions, and small-to-medium enterprises dealing with sensitive operational data face critical data privacy risks, vendor lock-in, and steep infrastructure expenses. Furthermore, existing open-source alternatives often present steep learning curves, require complex deployment configurations, and lack an integrated, intuitive drag-and-drop dashboard design and ETL (Extract, Transform, Load) environment.
+      </p>
+      <div class="sub-heading">Objectives:</div>
+      <ol style="margin-left: 20px; text-align: justify;">
+        <li>To design and implement a secure, lightweight, and self-hosted full-stack Business Intelligence web platform with zero licensing cost.</li>
+        <li>To provide versatile data ingestion modules supporting multi-format files (CSV, Excel, JSON) and relational databases (PostgreSQL / SQLite).</li>
+        <li>To build an interactive, visual drag-and-drop dashboard composer supporting 15+ real-time charting widgets (Bar, Line, Area, Pie, KPI cards) using Apache ECharts.</li>
+        <li>To incorporate automated schema detection, visual ETL data preparation, and secure Role-Based Access Control (RBAC).</li>
+      </ol>
+    </div>
+  </div>
+
+  <!-- Proposed Technology/Tools -->
+  <div class="detail-block">
+    <div class="detail-title">• Proposed Technology/Tools:</div>
+    <ul class="bullet-list">
+      <li><strong>Frontend:</strong> React.js 18, TypeScript, Vite, Ant Design 5 (Enterprise Components), Zustand (State Management)</li>
+      <li><strong>Visualization Engine:</strong> Apache ECharts, Recharts (Dynamic interactive charts)</li>
+      <li><strong>Backend API:</strong> Python 3.12, FastAPI (Asynchronous REST API framework), Pydantic v2</li>
+      <li><strong>Data Processing & ORM:</strong> Pandas, SQLAlchemy 2.0 (Async), Alembic (Database Migrations)</li>
+      <li><strong>Database:</strong> SQLite (Local Development) / PostgreSQL 16 (Production)</li>
+      <li><strong>Security & Auth:</strong> OAuth2 with JWT (JSON Web Tokens), Bcrypt Password Hashing, RBAC (Admin, Editor, Viewer)</li>
+      <li><strong>DevOps & Tooling:</strong> Docker, Docker Compose, Nginx Reverse Proxy, Git/GitHub, Postman, VS Code</li>
+    </ul>
+  </div>
+
+  <!-- Brief Abstract -->
+  <div class="detail-block">
+    <div class="detail-title">• Brief Abstract (150-200 words):</div>
+    <p style="text-align: justify; margin-left: 14px; margin-top: 4px;">
+      GYAN Analytics is an open-source, self-hosted Business Intelligence (BI) and data visualization platform developed to deliver enterprise-grade reporting and dashboard capabilities with zero software licensing costs and complete data sovereignty. As contemporary enterprises and academic institutions generate substantial volumes of diverse data, deriving actionable insights typically requires costly commercial software that compromises on-premise data control. GYAN Analytics addresses this challenge through a robust, asynchronous architecture comprising a Python FastAPI backend, a responsive React-TypeScript frontend, and a flexible relational storage layer. The platform facilitates direct ingestion from file uploads (CSV, Excel, JSON) and relational database sources, features automated schema detection and data cleaning workflows, and offers an intuitive drag-and-drop dashboard builder powered by Apache ECharts. Integrated with Role-Based Access Control (RBAC), secure JWT token management, and embeddable visual reporting, the system guarantees high throughput, low latency, and uncompromising privacy. By providing a modular, containerized alternative to proprietary BI platforms like Power BI and Zoho Analytics, GYAN Analytics establishes an accessible, scalable solution for modern operational intelligence.
+    </p>
+  </div>
+
+  <!-- Expected Outcome -->
+  <div class="detail-block">
+    <div class="detail-title">• Expected Outcome:</div>
+    <ol style="margin-left: 34px; margin-top: 4px; text-align: justify;">
+      <li>A fully functional, responsive web application enabling authenticated users to upload, query, and transform datasets.</li>
+      <li>An interactive dashboard composer allowing users to create, configure, save, and export multi-chart analytics views (PDF/PNG).</li>
+      <li>Secure multi-tenant workspace architecture with granular access tiers (Admin, Editor, Viewer) and encrypted credentials.</li>
+      <li>A modular, containerized deployment package (via Docker Compose) enabling single-command deployment across diverse operating systems.</li>
+    </ol>
+  </div>
+
+  <!-- Signatures -->
+  <div class="signature-section">
+    <div class="sig-row">
+      <div>Panel Member Names: _________________________</div>
+      <div>Signature: _________________________</div>
+    </div>
+    <div class="sig-row" style="margin-bottom: 0;">
+      <div>Signature of HOD: _________________________</div>
+    </div>
+  </div>
+
+</body>
+</html>

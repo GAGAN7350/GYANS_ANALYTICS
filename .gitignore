@@ -1,0 +1,72 @@
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node
+node_modules/
+dist/
+build/
+.npm
+package-lock.json
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.env
+.venv
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Environment Variables
+.env
+.env.local
+.env.*
+
+# Docker
+docker-compose.override.yml
+.docker/
+
+# OS Files
+.DS_Store
+Thumbs.db
+
+# Databases & Runtime Storage
+*.db
+*.db-shm
+*.db-wal
+*.sqlite
+*.sqlite3
+backend/gyans_analytics.db*
+backend/data/vector_store/
+data/vector_store/
+backend/uploads/
+uploads/
+
+# Windows CLI runner shims
+powershell.cmd
+*.cmd

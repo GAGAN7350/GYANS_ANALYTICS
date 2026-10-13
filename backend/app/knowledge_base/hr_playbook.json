@@ -1,0 +1,55 @@
+{
+  "domain": "hr",
+  "name": "Human Resources & Workforce Analytics Playbook",
+  "benchmarks": {
+    "voluntary_attrition_rate": "8% - 13% annually (Healthy baseline; >18% indicates managerial or compensation misalignment)",
+    "offer_acceptance_rate": "80% - 90% (Below 75% signals non-competitive compensation or protracted hiring cycles)",
+    "average_tenure": "3.5 - 5.0 years (Tech/Startups: 2-3 years; Healthcare/Finance: 4-7 years)",
+    "compa_ratio_target": "0.95 - 1.05 (Ratio of actual salary to market salary midpoint; <0.85 represents high flight risk)",
+    "anomaly_tolerance": "1.0% - 3.0% (HR anomalies reflect extreme overtime surges, compensation discrepancies, or outlier tenure)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "High-Performer Retention & Flight-Risk Mitigation",
+      "lever": "Proactively adjust compa-ratios for top 15% high-performers currently paid below market median",
+      "problem_solved": "Losing high-performing institutional talent to competitors over small compensation deficits",
+      "financial_impact": "Saves $65,000 to $140,000 per avoided departure in recruitment fees, onboarding lag, and lost output",
+      "phase": "Phase 1 - Immediate Profit Protection (Days 1-7)",
+      "prescription": "Run an immediate compa-ratio audit across top-tier performers: any employee with 'exceeds expectations' rating and compa-ratio <0.90 must receive an off-cycle equity or base adjustment. Retaining proven talent is 3x cheaper than hiring external replacements."
+    },
+    {
+      "initiative": "Overtime Payroll Premium Elimination",
+      "lever": "Cap recurring overtime in burnout departments and cross-train adjacent staff for surge coverage",
+      "problem_solved": "Sustained overtime payroll expenses causing budget overruns, fatigue errors, and subsequent resignations",
+      "financial_impact": "Reduces direct overtime payroll spend by 18% to 28%; cuts work-related defect and claim rates",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Enforce maximum 10 hours/week overtime limits per FTE: automatically reallocate surge volume to certified internal cross-trained floating pools. This eliminates 1.5x overtime wage inflation while lowering worker burnout attrition."
+    },
+    {
+      "initiative": "Internal Talent Mobility Pipeline",
+      "lever": "Establish structured fast-track promotion and lateral transfer pathways at the 18-month tenure mark",
+      "problem_solved": "Employees leaving after 1.5-2 years due to lack of career visibility and perceived stagnation",
+      "financial_impact": "Boosts 3-year organizational retention by 32%; compresses external executive search agency spend by 40%",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Deploy internal career marketplace: require all open roles to be posted internally for 10 business days before external agency sourcing. Prioritizing internal promotions keeps organizational knowledge in-house."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "In workforce intelligence and talent management, healthy annual voluntary turnover benchmarks between 8% and 13%. When attrition exceeds 18%, organizational institutional memory degrades. Offer acceptance rates must maintain above 80%, and employee compa-ratios should center near 1.00 relative to median market bands."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Workforce anomalies typically isolate: (1) Severe Overtime Outliers (>40% above department mean) creating immediate burnout risk, (2) Ghost Inactive Records with active payroll disbursements, and (3) Compa-Ratio Divergence where high performers are compensated significantly below market parity."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "Tenure correlates positively with institutional productivity, but plateaus without promotion or internal mobility. Strong negative correlation between Overtime Hours and Job Satisfaction is the strongest predictive precursor to resignation within 90 days."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority People Operations Plan: (1) Conduct proactive retention adjustments on employees with compa-ratios below 0.90 who hold high performance ratings; (2) Re-distribute workload in teams showing top-decile overtime hours; (3) Deploy stay-interviews for key talent segments at the 18-month tenure mark."
+    }
+  ]
+}

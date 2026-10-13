@@ -1,0 +1,9 @@
+[project]
+name = "gyans-analytics"
+version = "0.1.0"
+description = "GYANS Analytics open-source BI/analytics platform"
+authors = [{ name = "GYANS", email = "info@gyans.com" }]
+requires-python = ">=3.12"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"

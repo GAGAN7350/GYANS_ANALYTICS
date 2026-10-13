@@ -1,0 +1,49 @@
+{
+  "domain": "general_operations",
+  "name": "General Operations & Business Management Playbook",
+  "benchmarks": {
+    "operating_margin": "10% - 20% (Standard across healthy operating enterprises)",
+    "anomaly_tolerance": "1.5% - 3.0% (Upper control bound for statistical process variance)",
+    "efficiency_ratio": "65% - 80% (Healthy operational expense to gross revenue ratio)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Process Standardization & Variance Reduction",
+      "lever": "Audit operational workflows and establish strict upper and lower control limits on highest-variance metrics",
+      "problem_solved": "Operational unpredictability and process defects driving avoidable overhead costs",
+      "financial_impact": "+5.0% to +8.5% Net Operating Margin Improvement",
+      "phase": "Phase 1 - Immediate Operational Triage (Days 1-7)",
+      "prescription": "Implement automated control bounds on the top-variance indicators to eliminate recurring operational defects and halt bottom-line slippage."
+    },
+    {
+      "initiative": "Resource Reallocation to Core Performance Drivers",
+      "lever": "Reallocate departmental budget and staff bandwidth strictly into the strongest correlated operational drivers",
+      "problem_solved": "Capital and labor diffused across low-impact activities with minimal return on investment",
+      "financial_impact": "+12% to +18% Capital Efficiency and Performance Velocity",
+      "phase": "Phase 2 - Strategic Scaling & Margin Expansion (Days 8-21)",
+      "prescription": "Direct organizational investment and priority focus toward your primary leading driver variables, scaling activities with verified statistical return."
+    },
+    {
+      "initiative": "Automated Anomaly Governance & Outlier Mitigation",
+      "lever": "Deploy automated threshold alerting on flagged outlier rows to resolve operational friction before compounding",
+      "problem_solved": "Unmonitored process exceptions and data discrepancies creating structural inefficiencies",
+      "financial_impact": "Reduces operational error and remediation costs by 20% to 30%",
+      "phase": "Phase 3 - Enterprise Governance & Continuous Improvement (Days 22-30)",
+      "prescription": "Establish automated anomaly alerts at the point of data capture to isolate deviations before they compound into systemic enterprise overhead."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "benchmarks",
+      "text": "General Operations & Business Management Standards: Healthy operating margin benchmarks range from 10% to 20%. Statistical anomaly tolerances should be maintained under 3.0% of total transactional volume to ensure predictable organizational performance."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Operational Anomaly Triage Protocol: Data points deviating by more than 3 standard deviations indicate process breakdowns, irregular batch executions, or data entry errors. Immediate root-cause containment is required within 48 hours."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Strategic Transformation Protocol: Maximize corporate efficiency by concentrating resources on primary correlation drivers, standardizing high-variance processes, and establishing continuous automated governance."
+    }
+  ]
+}

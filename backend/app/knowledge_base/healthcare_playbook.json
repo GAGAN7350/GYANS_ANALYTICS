@@ -1,0 +1,55 @@
+{
+  "domain": "healthcare",
+  "name": "Healthcare & Hospital Operations Playbook",
+  "benchmarks": {
+    "bed_occupancy_rate": "75% - 85% (Optimal operating efficiency; >90% creates patient flow bottlenecks and infection risks)",
+    "average_length_of_stay": "4.2 - 5.5 days (General inpatient benchmark; surgical procedures: 2-4 days)",
+    "30_day_readmission_rate": "8% - 14% (Over 15% incurs regulatory penalties and indicates discharge protocol gaps)",
+    "emergency_wait_time": "15 - 30 minutes to initial triage (Exceeding 60 mins causes left-without-being-seen rates to spike)",
+    "anomaly_tolerance": "1.0% - 2.5% (Clinical outliers involve catastrophic complications, ICU prolonged admissions, or coding billing errors)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Discharge Navigation & ALOS Cost Compression",
+      "lever": "Institute multidisciplinary morning discharge rounds and 48-hour post-acute telehealth triage",
+      "problem_solved": "Excess inpatient days beyond reimbursement DRG thresholds generating uncompensated facility overhead",
+      "financial_impact": "Saves $1,200 to $1,800 per acute bed day; eliminates insurer 30-day readmission penalty withholdings",
+      "phase": "Phase 1 - Immediate Profit Protection (Days 1-7)",
+      "prescription": "Mandate early discharge planning within 24 hours of admission: pre-arrange home health and prescription delivery to discharge patients by 11:00 AM. Freeing beds earlier unlocks capacity for high-margin elective surgical admissions."
+    },
+    {
+      "initiative": "Operating Room Block Utilization Optimization",
+      "lever": "Reallocate underutilized surgical block times based on historical procedure utilization metrics",
+      "problem_solved": "Valuable surgical suites sitting empty during reserved surgeon blocks while other cases are delayed",
+      "financial_impact": "+8% to +14% surgical throughput; generates +$450k to +$1.2M in annual facility surgical margins",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Enforce use-it-or-lose-it block scheduling: surgeons with historical block utilization <70% have their block auto-released to open scheduling 7 days in advance. Minimizing idle OR suites directly boosts surgical EBITDA."
+    },
+    {
+      "initiative": "High-Cost Chronic Cohort Navigation",
+      "lever": "Assign dedicated nurse navigators to the top 5% clinical cost super-utilizers",
+      "problem_solved": "Unmanaged chronic patients cycling through high-cost emergency departments repeatedly",
+      "financial_impact": "Cuts uncompensated emergency department expenses by 25% to 35%",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Deploy automated patient stratification: identify patients with 3+ admissions in 6 months and enroll them into proactive outpatient maintenance, medication compliance monitoring, and community paramedicine programs."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "In hospital administration and clinical operations, inpatient bed occupancy is optimized between 75% and 85%. Operating above 90% leads to emergency department boarding and nurse burnout. Standard acute average length of stay (ALOS) benchmarks at 4.5 to 5.2 days, and 30-day all-cause readmission must stay below 13%."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Healthcare outliers (anomaly rate >2.0%) generally map to: (1) Super-Utilizers with multi-morbid chronic conditions requiring intensive case management, (2) Extended ICU Stays with ventilator dependency driving geometric cost increases, or (3) Billing / DRG Coding Discrepancies where procedure codes do not match diagnosis."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "Patient age correlates moderately with length of stay, but the strongest clinical driver of cost is ICU step-down delay. When nurse-to-patient staffing ratios correlate inversely with incident report frequency, clinical staffing shortages are directly elevating adverse event rates."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority Clinical Operations Plan: (1) Standardize post-acute discharge transition protocols with 48-hour telehealth follow-up to curb readmission spikes; (2) Implement predictive bed-turnover scheduling to eliminate surgical cancellation bottlenecks; (3) Assign dedicated nurse navigators to the top 5% highest-cost chronic patient cohorts."
+    }
+  ]
+}

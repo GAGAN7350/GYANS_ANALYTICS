@@ -1,0 +1,55 @@
+{
+  "domain": "religious",
+  "name": "Religious, Temple & Philanthropic Giving Playbook",
+  "benchmarks": {
+    "donor_retention_rate": "42% - 48% (Standard non-profit/religious baseline; recurring tithers exceed 70%)",
+    "pareto_concentration": "Top 15% - 20% of donors generate 75% - 85% of total offerings and contributions",
+    "festival_surge_multiplier": "3.5x - 6.0x typical weekly collection during major festival and holy periods",
+    "digital_vs_cash_ratio": "45% - 60% digital UPI/Card giving (Modern benchmark; higher digital correlates with higher repeat giving)",
+    "anomaly_tolerance": "1.0% - 3.0% (Giving anomalies indicate anonymous major estate gifts, festival corporate sponsorships, or audit flags)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Major Donor Endowment Stewardship",
+      "lever": "Establish dedicated project impact transparency and personalized recognition for top 15% donor cohort",
+      "problem_solved": "Major benefactors lapsing or reducing annual contributions due to lack of visible project reporting",
+      "financial_impact": "+25% to +38% increase in annual major capital project and endowment donations",
+      "phase": "Phase 1 - Immediate Fund Protection (Days 1-7)",
+      "prescription": "Institute quarterly stewardship briefs for the top 15% contributing cohort: provide itemized project utilization updates showing exactly how their contributions were deployed. Transparent trust reporting directly encourages repeat multi-year commitments."
+    },
+    {
+      "initiative": "Festival-to-Recurring Digital Subscription Giving",
+      "lever": "Convert one-off festival attendees into automated monthly micro-donors via digital standing instructions",
+      "problem_solved": "Extreme cash flow volatility between peak festival surges and dry off-season months",
+      "financial_impact": "+20% to +30% expansion in predictable baseline operating revenue; smooths annual cash flows",
+      "phase": "Phase 2 - Strategic Growth & Fund Expansion (Days 8-21)",
+      "prescription": "Deploy QR code landing pages during festival events offering automatic $10-$50 monthly recurring seva/contribution subscriptions. Converting just 8% of festival attendees to recurring donors stabilizes year-round operating cash flow."
+    },
+    {
+      "initiative": "Digital Collection Touchpoint Deployment",
+      "lever": "Place contactless UPI/QR and card kiosks at all high-footfall temple/community entrances and counters",
+      "problem_solved": "Cash-only friction causing visitors without paper currency to pass by offering boxes without giving",
+      "financial_impact": "Drives 35% to 50% increase in impulse offerings; eliminates cash counting and leakage risks",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Install smart digital kiosk terminals across all sanctum exits and prasadam/service desks with predefined donation options ($5, $20, $50, $100). Digital offerings increase contribution velocity and generate instant automated accounting entries."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "In temple, trust, and religious philanthropy analytics, total giving volume follows a strict Pareto distribution: approximately 15% to 20% of contributors account for 80% of aggregate collections. Annual donor retention benchmarks at 45%, while festival and holy event cycles create predictable 4x to 6x collection surges over baseline weeks."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Religious and charitable collection anomalies represent: (1) Major Philanthropic Benefactors providing substantial one-off endowment or construction donations, (2) Festival Hundi / Cash Surges requiring multi-witness audit reconciliation, or (3) Data Ingestion Duplications during manual receipt entry."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "Giving frequency exhibits a strong positive correlation with lifetime donor value, outperforming initial gift size as a retention indicator. Increasing adoption of digital giving (UPI, cards, scheduled bank transfers) correlates with higher regularity and 28% higher annual cumulative contributions per donor."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority Religious & Charitable Trust Plan: (1) Establish dedicated stewardship programs and transparent utilization reports for the top 20% major donor cohort; (2) Convert festival-only occasional donors into recurring monthly contributors via digital subscription giving; (3) Implement dual-custody digital reconciliation for cash offering collections during peak festival surge dates."
+    }
+  ]
+}

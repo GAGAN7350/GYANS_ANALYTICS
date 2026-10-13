@@ -1,0 +1,55 @@
+{
+  "domain": "manufacturing",
+  "name": "Manufacturing & Supply Chain Operations Playbook",
+  "benchmarks": {
+    "overall_equipment_effectiveness": "80% - 88% (World-class manufacturing target: 85%; average plants: 60-70%)",
+    "on_time_in_full_delivery": "95% - 98% (Standard supply chain SLA; below 90% results in contract chargebacks)",
+    "scrap_and_defect_rate": "0.5% - 1.8% (Precision manufacturing target; above 3% indicates tooling failure or operator training gaps)",
+    "unscheduled_downtime": "Under 3.0% (Exceeding 5% creates severe production schedule cascading delays)",
+    "anomaly_tolerance": "0.8% - 2.0% (Industrial anomalies indicate vibration harmonics, thermal breakdown, or sensor telemetry drift)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Predictive Maintenance Downtime Elimination",
+      "lever": "Deploy vibration and thermal telemetry triggers on bottleneck production machinery",
+      "problem_solved": "Catastrophic unpredicted equipment failure stopping plant operations for days",
+      "financial_impact": "Eliminates 60% of unscheduled downtime; generates +$180k to +$650k in rescued capacity",
+      "phase": "Phase 1 - Immediate Profit Protection (Days 1-7)",
+      "prescription": "Institute condition-based maintenance: when sensor variance exceeds 2 standard deviations above baseline, flag the line for scheduled off-shift inspection. Preventing in-cycle motor seizures preserves factory throughput and prevents rush overtime costs."
+    },
+    {
+      "initiative": "Supplier Quality Scrap Chargebacks",
+      "lever": "Trace raw material lot IDs directly to scrap rates and enforce contract quality penalties",
+      "problem_solved": "Absorbing direct material costs caused by substandard supplier raw materials",
+      "financial_impact": "Recovers 1.5% to 3.0% in direct material cost leakage via supplier credits",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Automate defect-to-lot traceability: when a specific batch generates defect rates >2.5%, immediately halt machine feeding from that vendor and generate automated chargeback invoices to the vendor. Protects finished-goods yield."
+    },
+    {
+      "initiative": "Dynamic Safety Stock Optimization",
+      "lever": "Rebalance buffer inventory from static minimums to lead-time demand variance curves",
+      "problem_solved": "Over-ordering slow-moving components while under-stocking critical fast-turn parts",
+      "financial_impact": "Reduces total inventory carrying costs by 14% to 20%; maintains 98%+ order fill rate",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Run ABC/XYZ inventory segmentation: decrease safety stock by 30% on low-volatility components and reallocate warehouse space and capital into high-velocity production inputs, immediately unfreezing operational working capital."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "World-class manufacturing environments target Overall Equipment Effectiveness (OEE) at 85% or higher, combining 90% Availability, 95% Performance, and 99.9% Quality. In logistics and distribution, On-Time In-Full (OTIF) delivery must remain above 95% to maintain supplier tier status and avoid penalty deductions."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Manufacturing outliers indicate physical hardware degradation: (1) Bearing or Motor Friction causing abnormal vibration or thermal spikes, (2) Sensor Drift sending erroneous baseline telemetry, or (3) Raw Material Batch Inconsistencies causing sudden bursts of dimensional defect rejections."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "Machine operating speed correlates directly with throughput, but exhibits an exponential non-linear threshold where increased speed degrades quality yield. When ambient temperature and vibration correlate strongly with defect counts, thermal expansion in mechanical fixtures is the direct root cause."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority Manufacturing Reliability Plan: (1) Implement vibration and temperature threshold telemetry for condition-based predictive maintenance before mechanical failure occurs; (2) Rebalance assembly line bottlenecks based on takt time analysis; (3) Audit supplier raw material certifications on defect-correlated production batches."
+    }
+  ]
+}

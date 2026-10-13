@@ -1,0 +1,55 @@
+{
+  "domain": "retail",
+  "name": "Retail & E-Commerce Operational Playbook",
+  "benchmarks": {
+    "gross_margin": "30% - 45% (Healthy benchmark for omnichannel retail; below 25% signals excessive discounting)",
+    "operating_margin": "8% - 15% (Typical for retail; specialty goods exceed 18%)",
+    "order_return_rate": "5% - 9% (Brick-and-mortar: 5-8%; E-commerce apparel: 15-25%)",
+    "inventory_turnover": "4x - 8x per year (Faster turns signal healthy inventory replenishment)",
+    "anomaly_tolerance": "1.5% - 3.5% (High anomalies usually represent wholesale bulk buyers, seasonal promotions, or fraudulent checkout attempts)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Price & Margin Protection",
+      "lever": "Cap promotional discounts & enforce minimum basket thresholds for free shipping",
+      "problem_solved": "Unprofitable volume growth where aggressive discounts erode gross margin",
+      "financial_impact": "+3.5% to +6.0% Gross Margin Recovery across top-selling SKUs",
+      "phase": "Phase 1 - Immediate Profit Protection (Days 1-7)",
+      "prescription": "Mandate an immediate 5% discount cap on high-velocity items and introduce minimum cart values ($50+) before free shipping applies. Eliminating unhedged shipping subsidies stops immediate bottom-line leakage."
+    },
+    {
+      "initiative": "High-LTV VIP Cohort Expansion",
+      "lever": "Reallocate customer acquisition budget toward retaining top 15% VIP shopper segment",
+      "problem_solved": "High customer acquisition cost (CAC) spent on one-time discount seekers who never return",
+      "financial_impact": "+18% to +25% Customer Lifetime Value (LTV) with 30% reduction in churn",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Bifurcate marketing campaigns: Stop paid ad retargeting on one-time bargain hunters. Reallocate 40% of ad spend into automated VIP retention perks, early product access, and personalized bundles for your top customer cluster."
+    },
+    {
+      "initiative": "Deadstock Liquidation & Working Capital Release",
+      "lever": "Dynamic automated markdowns on inventory aging past 60 days to clear warehouse slots",
+      "problem_solved": "Trapped cash flow in slow-moving SKUs increasing holding costs and depreciation",
+      "financial_impact": "Releases 8% to 12% in trapped working capital; cuts inventory carrying costs by 15%",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Deploy automated inventory aging alerts: Trigger tiered 10%-20% bundle promotions on items exceeding 60 shelf-days. Channel the released cash flow directly into replenishing your top 20% highest-margin fast-moving items."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "In retail and e-commerce, gross margins typically range between 30% and 45%. When average margins fall below 25%, root causes usually trace back to excessive promotional discounts, clearance liquidations, or unhedged shipping fees. Healthy inventory turnover is 4 to 8 times annually, with order return rates ideally controlled under 9%."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Retail anomalies above 3.0% are categorized into three patterns: (1) Bulk Commercial Resellers placing orders 5x-10x the median order quantity, (2) Flash Sale Promotional Surges causing extreme SKU velocity, and (3) Payment Fraud or Cart-Testing bots generating rapid low-ticket or zero-value transactions."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "The strongest operational driver in retail is the coupling between Order Volume and Revenue. However, if Order Volume correlates positively with Revenue but negatively with Profit, it indicates price erosion where unit volumes are subsidized by unprofitable discount tiers."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority Retail Action Plan: (1) Establish minimum order thresholds and tier-based discounts to protect gross margin baselines; (2) Segment high-frequency shoppers from one-off discount hunters using RFM cohort models; (3) Implement automated checkout velocity rules to screen out fraudulent multi-card transaction spikes."
+    }
+  ]
+}

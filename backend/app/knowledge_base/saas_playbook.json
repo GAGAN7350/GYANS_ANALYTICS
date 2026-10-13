@@ -1,0 +1,55 @@
+{
+  "domain": "saas",
+  "name": "SaaS & Subscription Economics Playbook",
+  "benchmarks": {
+    "net_revenue_retention": "105% - 125% (World-class enterprise SaaS exceeds 130%; below 100% indicates shrinking base)",
+    "annual_gross_churn": "5% - 8% (Enterprise: <5%/yr; Mid-Market: 7-12%/yr; SMB: 15-25%/yr)",
+    "ltv_to_cac_ratio": "3.0x - 5.0x (Below 3.0x indicates unsustainable acquisition; above 5.0x indicates under-investment in growth)",
+    "cac_payback_period": "8 - 14 months (Capital efficient target; exceeding 18 months creates cash burn headwinds)",
+    "anomaly_tolerance": "1.0% - 3.0% (Subscription anomalies reflect runaway API usage, enterprise multi-seat expansion, or churn spikes)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Usage-Based Expansion Monetization",
+      "lever": "Implement automated seat overage billing and consumption-based tier triggers",
+      "problem_solved": "Customers growing in usage without paying more, leaving expansion revenue on the table",
+      "financial_impact": "Drives Net Revenue Retention (NRR) from 102% to >118%; adds 15-20% high-margin ARR",
+      "phase": "Phase 1 - Immediate Profit Protection (Days 1-7)",
+      "prescription": "Auditing account consumption: accounts utilizing >85% of their plan threshold must be automatically prompted with in-app 1-click tier upgrades. Monetizing natural account growth immediately increases Average Revenue Per Account (ARPA)."
+    },
+    {
+      "initiative": "Proactive Churn Early-Warning Firewall",
+      "lever": "Trigger automated Customer Success intervention when 14-day login velocity drops >25%",
+      "problem_solved": "Discovering customer churn at annual renewal time when it is too late to save the account",
+      "financial_impact": "Reduces annual logo churn by 4% to 7%; protects recurring cash flow baseline",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Build automated usage telemetry alerts: when key executive or team logins decline for two consecutive weeks, auto-schedule an executive health check call and workflow training session before the cancellation request is triggered."
+    },
+    {
+      "initiative": "Acquisition Channel CAC Compression",
+      "lever": "Cut ad spend on paid acquisition channels showing >35% first-year churn; reallocate to inbound",
+      "problem_solved": "Burning capital acquiring low-retention customers who never reach CAC payback threshold",
+      "financial_impact": "Compresses CAC payback period from 16 months to under 10 months; saves $80k-$200k in ad burn",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Enforce channel attribution tracking: calculate LTV/CAC by individual acquisition campaign. Defund paid ads generating unprofitable short-tenure churn and redirect budget toward product-led growth and high-retention organic referrals."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "SaaS economic health is governed by Net Revenue Retention (NRR) and unit economics. Top-quartile enterprise SaaS companies achieve NRR above 120% and gross logo churn under 5% annually. Sustainable customer acquisition requires an LTV:CAC ratio above 3.0x and CAC payback completed within 12 months."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "SaaS anomaly spikes (>2.5%) typically correspond to: (1) Enterprise Whale Accounts with custom seat tiers generating 20x average ARR, (2) Sudden Feature Adoption Drop-Off signaling immediate renewal cancellation risk, or (3) Automated API Telemetry Spikes exceeding contractual fair-use quotas."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "Product engagement metrics (such as Weekly Active Users / Monthly Active Users and core workflow completion rate) exhibit the highest positive correlation with contract renewal and expansion. Strong negative correlation between support ticket volume and account expansion indicates product usability bottlenecks."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority SaaS Executive Plan: (1) Trigger automated Customer Success interventions when product usage velocity drops more than 20% over 14 consecutive days; (2) Introduce usage-based expansion tiers to capture value from high-consumption accounts; (3) Reallocate marketing spend from high-churn acquisition channels into proven customer retention cohorts."
+    }
+  ]
+}

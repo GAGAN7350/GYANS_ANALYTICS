@@ -1,0 +1,55 @@
+{
+  "domain": "finance",
+  "name": "Finance, Banking & Credit Risk Playbook",
+  "benchmarks": {
+    "fraud_contamination_rate": "0.05% - 0.20% (Standard portfolio tolerance; >0.5% triggers critical fraud freeze)",
+    "debt_to_income_ratio": "Below 36% (Standard approval; 36-43% requires secondary scrutiny; >43% high default probability)",
+    "non_performing_loan_rate": "1.0% - 2.5% (Prime banking portfolio; >4% indicates relaxed underwriting or macro downturn)",
+    "net_interest_margin": "2.8% - 3.8% (Benchmark spread between interest earned and cost of capital)",
+    "anomaly_tolerance": "0.5% - 1.5% (Financial anomalies represent structuring, money laundering flags, or sudden balance spikes)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Risk-Adjusted Margin Pricing",
+      "lever": "Calibrate loan interest rates dynamically to borrower leverage ratios and DTI scores",
+      "problem_solved": "Underpricing credit risk on marginal borrowers leading to elevated loan-loss provisions",
+      "financial_impact": "+40 to +75 bps expansion in Net Interest Margin (NIM); cuts default write-offs by 18%",
+      "phase": "Phase 1 - Immediate Profit Protection (Days 1-7)",
+      "prescription": "Replace flat interest rate bands with risk-based dynamic rate pricing. Borrowers with DTI > 38% must be priced at +125 bps premium or require 15% higher down-payment, immediately insulating balance-sheet capital against defaults."
+    },
+    {
+      "initiative": "Early Pre-Delinquency Intervention",
+      "lever": "Deploy proactive debt restructuring when customer credit utilization spikes above 80%",
+      "problem_solved": "Waiting until 90-day delinquency before contacting borrowers when recovery rates collapse below 25%",
+      "financial_impact": "Reduces bad-debt charge-offs by 22% to 30%; preserves recurring interest income",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Trigger automated outreach at day-15 of missed payment: offer 6-month interest-only conversion or schedule rebalancing before full default occurs. Early proactive modification preserves principal recovery rates above 80%."
+    },
+    {
+      "initiative": "Prime Cohort Accelerated Origination",
+      "lever": "Automate instant digital underwriting for top credit-score cluster (credit score > 740)",
+      "problem_solved": "Protracted manual underwriting cycle times causing prime customers to defect to fintech rivals",
+      "financial_impact": "+14% origination volume growth with zero increase in loan-loss reserves",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Create straight-through processing (STP) for the prime cohort: compress approval latency from 48 hours to under 3 minutes using API tax and bank telemetry. Capturing prime demand faster directly increases interest earnings."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "In commercial finance and retail banking, debt-to-income (DTI) ratios must remain below 36% for prime loan approvals. Net interest margins typically benchmark between 2.8% and 3.8%. A healthy portfolio maintains non-performing loan (NPL) rates below 2.5%, with fraud contamination kept strictly under 0.15%."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Financial transaction anomalies exceeding 1.0% require immediate AML (Anti-Money Laundering) triage. Key risk archetypes include: (1) Rapid Structuring (repeated transfers just below reporting thresholds), (2) Velocity Surges (multiple cross-border card authorizations in minutes), and (3) Inactive Account Reactivations with sudden high-ticket withdrawals."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "In credit risk modeling, strong inverse correlation between Credit Score and Default Likelihood is standard. When loan balance correlates strongly with late fee frequency, it indicates liquidity distress in borrowers, requiring proactive loan restructuring before 90-day delinquency."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority Financial Governance Plan: (1) Deploy real-time rule engines for transaction velocity and geo-mismatch detection; (2) Implement dynamic risk-based pricing where borrower interest rate adjusts to leverage ratio; (3) Re-underwrite or require collateral enhancements on credit lines exhibiting high utilization with zero principal paydowns."
+    }
+  ]
+}

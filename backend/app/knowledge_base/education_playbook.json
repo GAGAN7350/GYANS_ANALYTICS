@@ -1,0 +1,55 @@
+{
+  "domain": "education",
+  "name": "Education, Student Performance & Academic Analytics Playbook",
+  "benchmarks": {
+    "course_completion_rate": "78% - 88% (Standard higher ed; online courses: 15-30%)",
+    "attendance_correlation_threshold": "r > 0.65 (Attendance strongly drives final grade outcomes; <75% attendance triggers dropout risk)",
+    "grade_point_average_spread": "Mean 2.8 - 3.2 on 4.0 scale; standard deviation 0.5 - 0.7",
+    "student_faculty_ratio": "14:1 - 18:1 (Optimal undergraduate teaching benchmark)",
+    "anomaly_tolerance": "1.0% - 3.0% (Academic anomalies reflect sudden grade drop-offs, administrative exam grading errors, or prodigy outliers)"
+  },
+  "profit_matrix": [
+    {
+      "initiative": "Tuition Revenue Protection via Week-4 Early Alert",
+      "lever": "Automate early-alert notifications for students missing 2+ early assignments or showing <80% attendance",
+      "problem_solved": "Students silently dropping out mid-semester, resulting in lost tuition revenue and diminished completion rankings",
+      "financial_impact": "Increases semester retention by 5% to 8%; preserves $180,000 to $450,000 in annual tuition income",
+      "phase": "Phase 1 - Immediate Revenue Protection (Days 1-7)",
+      "prescription": "Mandate early intervention by Week 4: academic counselors must initiate direct contact with flagged disengaged students before drop-deadline dates. Keeping existing students enrolled is 5x more cost-effective than marketing to recruit replacements."
+    },
+    {
+      "initiative": "Gateway Prerequisite Course Supplemental Instruction",
+      "lever": "Deploy peer-assisted study sessions in foundational high-failure rate prerequisite courses",
+      "problem_solved": "Bottleneck prerequisite courses causing course failures, delayed graduation, and subsequent transfer departures",
+      "financial_impact": "Lowers course failure rates by 22%; improves 4-year on-time graduation rate by 14%",
+      "phase": "Phase 2 - Strategic Growth & Margin Expansion (Days 8-21)",
+      "prescription": "Assign high-performing upperclassmen to lead structured weekly tutoring pods for lower-quartile students in gateway quantitative courses. Removing learning bottlenecks keeps students on track to complete their degree program."
+    },
+    {
+      "initiative": "Program Portfolio High-Demand Margin Optimization",
+      "lever": "Reallocate instructional budgets and section capacities toward high-demand, high-margin degree specializations",
+      "problem_solved": "Subsidizing chronically under-enrolled elective sections while waitlisting high-demand programs",
+      "financial_impact": "+10% to +16% expansion in net academic operational margin; optimizes faculty capacity",
+      "phase": "Phase 3 - Enterprise Efficiency & Governance (Days 22-30)",
+      "prescription": "Perform curriculum enrollment analysis: consolidate low-enrollment niche sections into alternating-semester schedules, and expand section seats in high-demand, high-tuition certificate and master's tracks."
+    }
+  ],
+  "knowledge_chunks": [
+    {
+      "topic": "kpi_benchmarks",
+      "text": "In academic and student performance analytics, course completion rates in traditional institutions benchmark between 78% and 88%. Attendance rates below 75% serve as the primary early warning indicator for student attrition. A healthy grade distribution exhibits a bell curve centered around 3.0 GPA with standard deviation near 0.6."
+    },
+    {
+      "topic": "anomaly_triage",
+      "text": "Academic anomalies (>2.0%) identify: (1) Sudden Severe Grade Drops (>2 standard deviations) reflecting personal crisis or disengagement, (2) Systematic Exam Grading Outliers indicating subjective grading bias across sections, or (3) Academic Honesty / Plagiarism Flags with irregular completion timestamps."
+    },
+    {
+      "topic": "correlation_drivers",
+      "text": "Consistent assignment submission velocity and attendance show the highest positive correlation with final assessment success. Midterm assessment scores correlate strongly (r > 0.75) with final outcome, making week-6 interventions the most cost-effective retention leverage point."
+    },
+    {
+      "topic": "strategic_initiatives",
+      "text": "Priority Academic Dean & Faculty Plan: (1) Deploy early-alert automated interventions at Week 4 for students exhibiting consecutive missed submissions; (2) Standardize exam rubrics across teaching assistants to eliminate inter-section variance; (3) Implement peer tutoring cohorts for students in the lower quartile of core foundational prerequisite courses."
+    }
+  ]
+}
