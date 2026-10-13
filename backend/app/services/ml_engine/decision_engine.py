@@ -17,7 +17,6 @@ class DecisionEngine:
     def classify_column_semantics(col_name: str, series: pd.Series) -> Dict[str, Any]:
         """Classifies a column's real-world business meaning and security status."""
         name_lower = col_name.lower().strip()
-        sample_non_null = series.dropna().astype(str).head(50).tolist()
         
         is_pii = False
         semantic_type = "generic_text"

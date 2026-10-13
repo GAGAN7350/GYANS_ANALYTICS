@@ -7,3 +7,27 @@ requires-python = ">=3.12"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py312"
+exclude = [
+    "alembic",
+    "scaffold.py",
+    "uploads",
+    "data",
+    "gyan_analytics_model_v2",
+    ".venv",
+    "venv",
+]
+
+[tool.ruff.lint]
+select = ["E", "F", "W"]
+ignore = [
+    "E501", # line too long
+    "E402", # module level import not at top of file
+    "F401", # unused imports (standard in __init__.py and router aggregations)
+    "W291", # trailing whitespace
+    "W293", # blank line contains whitespace
+]

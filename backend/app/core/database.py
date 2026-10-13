@@ -36,6 +36,10 @@ async def get_db() -> AsyncGenerator[AsyncSession, None]:
 
 async def create_tables():
     """Create all tables. Call on startup."""
-    async with engine.begin() as conn:
-        from app.models import user, workspace, dataset, dashboard, query, template  # noqa
-        await conn.run_sync(Base.metadata.create_all)
+    try:
+        async with engine.begin() as conn:
+            from app.models import user, workspace, dataset, dashboard, query, template  # noqa
+            await conn.run_sync(Base.metadata.create_all)
+    except Exception as exc:
+        import logging
+        logging.getLogger(__name__).warning("create_tables notice: %s", exc)

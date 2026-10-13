@@ -16,3 +16,4 @@ python-dateutil
 httpx
 aiofiles
 scikit-learn
+asyncpg

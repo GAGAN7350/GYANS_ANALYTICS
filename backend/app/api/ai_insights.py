@@ -35,7 +35,7 @@ def _safe_float(val, default=0.0):
         if math.isnan(f) or math.isinf(f):
             return default
         return round(f, 4)
-    except:
+    except Exception:
         return default
 
 
@@ -88,9 +88,6 @@ async def generate_report(
         )
 
     numeric_cols = df.select_dtypes(include=[np.number]).columns.tolist()
-    categorical_cols = df.select_dtypes(include=["object", "category"]).columns.tolist()
-    total_rows = len(df)
-    total_cols = len(df.columns)
 
     # 1. Base ML Computations
     contamination = float(cfg.get("anomaly_contamination", 0.05 if tier != "ultra_pro" else 0.02))

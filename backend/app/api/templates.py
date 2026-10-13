@@ -199,7 +199,7 @@ async def list_templates(
 
     query = select(ReportTemplate).where(
         or_(
-            ReportTemplate.is_preset == True,
+            ReportTemplate.is_preset.is_(True),
             ReportTemplate.user_id == current_user.id
         )
     ).order_by(ReportTemplate.is_preset.desc(), ReportTemplate.created_at.desc())

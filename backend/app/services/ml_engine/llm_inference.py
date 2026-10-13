@@ -737,7 +737,7 @@ def _build_ultra_pro_report(
         "",
         f"> **Methodological Framework:** Isolation Forest with contamination prior $c={contamination:.4f}$; "
         f"Pearson correlation matrix ($p < 0.05$); $k$-Means clustering ($k={k}$); "
-        f"Dataset dimensionality $N={total_rows:,}$, $D={total_cols}$. Overall Health Index: **{health_score}/100**.",
+        f"Dataset dimensionality $N={total_rows:,}$, $D={total_cols}$; Target KPI: `{target_kpi}`. Overall Health Index: **{health_score}/100**.",
         "",
         "## 1. Mathematical Formulations & Statistical Engine",
         "",

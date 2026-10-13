@@ -7,7 +7,7 @@ import numpy as np
 from typing import List, Dict, Any, Optional
 from datetime import datetime, timezone
 from sqlalchemy.ext.asyncio import AsyncSession
-from sqlalchemy import select, text
+from sqlalchemy import select
 from fastapi import UploadFile, HTTPException
 
 from app.models.dataset import Dataset, ColumnMetadata

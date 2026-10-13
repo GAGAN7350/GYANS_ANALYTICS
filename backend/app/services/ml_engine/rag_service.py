@@ -46,7 +46,7 @@ DOMAIN_SYNONYMS: Dict[str, str] = {
     "manufacturing": "manufacturing",
     "supply_chain": "manufacturing",
     "logistics": "manufacturing",
-    "operations": "manufacturing",
+    "industrial": "manufacturing",
     "factory": "manufacturing",
     "hr": "hr",
     "workforce": "hr",
@@ -349,7 +349,7 @@ class DomainRAGService:
             actions = [
                 f"Calibrate operational tolerances against {canon_domain.title()} industry KPI baselines",
                 f"Isolate high-variance outliers exceeding the {benchmarks.get('anomaly_tolerance', '2.0%')} tolerance ceiling",
-                f"Enforce cohort-specific retention protocols on primary driver segments",
+                "Enforce cohort-specific retention protocols on primary driver segments",
             ]
 
         return {

@@ -113,7 +113,7 @@ async def list_datasets(
         datasets = result.scalars().all()
         data = [_serialize_dataset(d) for d in datasets]
         return JSONResponse(content=data)
-    except Exception as e:
+    except Exception:
         import traceback
         traceback.print_exc()
         raise
