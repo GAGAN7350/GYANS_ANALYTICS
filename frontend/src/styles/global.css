@@ -45,3 +45,71 @@ body {
 .ant-layout-sider {
   transition: all 0.2s;
 }
+
+/* ==========================================================================
+   Executive Print Styles for Report Export
+   ========================================================================== */
+@media print {
+  /* Hide chrome, navigation bars, sidebars, buttons */
+  body {
+    background: #ffffff !important;
+    color: #111827 !important;
+  }
+
+  header, nav, aside, .ant-layout-sider, .ant-layout-header, .no-print, .ant-btn, .ant-tabs-nav {
+    display: none !important;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .printable-report, .printable-report * {
+    visibility: visible;
+  }
+
+  .printable-report {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 24px 32px !important;
+    background: #ffffff !important;
+    color: #0f172a !important;
+    box-shadow: none !important;
+    border: none !important;
+  }
+
+  .print-page-break {
+    page-break-before: always;
+  }
+
+  table {
+    page-break-inside: avoid;
+    border-collapse: collapse !important;
+    width: 100% !important;
+  }
+
+  th, td {
+    border: 1px solid #cbd5e1 !important;
+    padding: 6px 10px !important;
+    color: #0f172a !important;
+  }
+
+  th {
+    background: #f1f5f9 !important;
+    font-weight: 700 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    page-break-after: avoid;
+    page-break-inside: avoid;
+    color: #0f172a !important;
+  }
+
+  /* Ensure text colors are high contrast */
+  p, span, div, li, strong, code {
+    color: #1e293b !important;
+  }
+}

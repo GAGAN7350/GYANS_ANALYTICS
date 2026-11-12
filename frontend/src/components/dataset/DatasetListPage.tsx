@@ -19,7 +19,8 @@ import {
   Statistic,
   Badge,
   Alert,
-  Popconfirm
+  Popconfirm,
+  Spin,
 } from 'antd';
 import {
   PlusOutlined,
@@ -33,10 +34,16 @@ import {
   ClusterOutlined,
   LineChartOutlined,
   BarChartOutlined,
+  ExperimentOutlined,
 } from '@ant-design/icons';
 import PageHeader from '@/components/shared/PageHeader';
 import EmptyState from '@/components/shared/EmptyState';
-import { datasetService, DatasetPreviewData, DatasetPatternsData } from '@/services/datasetService';
+import {
+  datasetService,
+  DatasetPreviewData,
+  DatasetPatternsData,
+  SampleDatasetMeta,
+} from '@/services/datasetService';
 import { Dataset } from '@/types';
 
 const { Text, Title, Paragraph } = Typography;
@@ -53,6 +60,12 @@ const DatasetListPage: React.FC = () => {
   const [uploading, setUploading] = useState<boolean>(false);
   const [fileList, setFileList] = useState<any[]>([]);
   const [uploadForm] = Form.useForm();
+
+  // Sample Datasets State
+  const [sampleModalOpen, setSampleModalOpen] = useState<boolean>(false);
+  const [samples, setSamples] = useState<SampleDatasetMeta[]>([]);
+  const [loadingSamples, setLoadingSamples] = useState<boolean>(false);
+  const [seedingId, setSeedingId] = useState<string | null>(null);
 
   // Preview / Patterns Drawer State
   const [activeDataset, setActiveDataset] = useState<Dataset | null>(null);
@@ -77,6 +90,46 @@ const DatasetListPage: React.FC = () => {
   useEffect(() => {
     fetchDatasets();
   }, []);
+
+  const handleOpenSamples = async () => {
+    setSampleModalOpen(true);
+    if (samples.length === 0) {
+      try {
+        setLoadingSamples(true);
+        const data = await datasetService.listSamples();
+        setSamples(data);
+      } catch (err: any) {
+        message.error(err.response?.data?.detail || 'Failed to load sample dataset catalog.');
+      } finally {
+        setLoadingSamples(false);
+      }
+    }
+  };
+
+  const handleSeedSample = async (sample: SampleDatasetMeta) => {
+    try {
+      setSeedingId(sample.id);
+      message.loading({
+        content: `Ingesting & profiling "${sample.name}" with ML engine...`,
+        key: 'seed',
+        duration: 0,
+      });
+      const created = await datasetService.seedSample(sample.id);
+      message.success({
+        content: `Sample "${sample.name}" loaded with automated ML patterns!`,
+        key: 'seed',
+      });
+      setSampleModalOpen(false);
+      navigate(`/datasets/${created.id}?setup=true`);
+    } catch (err: any) {
+      message.error({
+        content: err.response?.data?.detail || 'Failed to load demo dataset.',
+        key: 'seed',
+      });
+    } finally {
+      setSeedingId(null);
+    }
+  };
 
   const handleUploadSubmit = async () => {
     const filesToUpload = fileList
@@ -306,9 +359,17 @@ const DatasetListPage: React.FC = () => {
         title="Datasets & Connectors"
         subtitle="Upload data files, inspect automated schema profiling, and explore ML pattern insights."
         action={
-          <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsUploadOpen(true)}>
-            Upload Dataset
-          </Button>
+          <Space>
+            <Button
+              icon={<ExperimentOutlined />}
+              onClick={handleOpenSamples}
+            >
+              Try Sample Dataset
+            </Button>
+            <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsUploadOpen(true)}>
+              Upload Dataset
+            </Button>
+          </Space>
         }
       />
 
@@ -327,11 +388,21 @@ const DatasetListPage: React.FC = () => {
         <EmptyState
           icon={<DatabaseOutlined />}
           title="No Datasets Uploaded"
-          description="Upload a CSV, Excel (.xlsx), or JSON file to run schema profiling and ML pattern recognition."
+          description="Upload a CSV, Excel (.xlsx), or JSON file, or launch an enterprise demo dataset to test pattern recognition."
           action={
-            <Button type="primary" icon={<PlusOutlined />} onClick={() => setIsUploadOpen(true)}>
-              Upload First Dataset
-            </Button>
+            <Space>
+              <Button
+                type="primary"
+                icon={<ExperimentOutlined />}
+                onClick={handleOpenSamples}
+                style={{ background: '#722ed1', borderColor: '#722ed1' }}
+              >
+                Try Sample Dataset
+              </Button>
+              <Button icon={<PlusOutlined />} onClick={() => setIsUploadOpen(true)}>
+                Upload File
+              </Button>
+            </Space>
           }
         />
       ) : (
@@ -386,6 +457,80 @@ const DatasetListPage: React.FC = () => {
             </Dragger>
           </Form.Item>
         </Form>
+      </Modal>
+
+      {/* PRE-LOADED DEMO DATASETS MODAL */}
+      <Modal
+        title={
+          <Space>
+            <ExperimentOutlined style={{ color: '#722ed1' }} />
+            <span>Try Pre-loaded Demo Datasets</span>
+          </Space>
+        }
+        open={sampleModalOpen}
+        onCancel={() => setSampleModalOpen(false)}
+        footer={null}
+        width={820}
+      >
+        <Paragraph type="secondary" style={{ marginBottom: 20 }}>
+          Explore GYAN Analytics instantly without uploading files. Select an industry sample dataset to test automated schema profiling, ML anomaly detection, cohort clustering, and multi-tier intelligence reports.
+        </Paragraph>
+
+        {loadingSamples ? (
+          <div style={{ textAlign: 'center', padding: '40px 0' }}>
+            <Spin tip="Loading demo catalog..." />
+          </div>
+        ) : (
+          <Row gutter={[16, 16]}>
+            {samples.map((s) => (
+              <Col xs={24} sm={12} key={s.id}>
+                <Card
+                  size="small"
+                  hoverable
+                  style={{
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'space-between',
+                    borderColor: '#e2e8f0',
+                  }}
+                  title={
+                    <Space direction="vertical" size={2} style={{ width: '100%' }}>
+                      <Tag color="purple" style={{ margin: 0 }}>{s.category}</Tag>
+                      <Text strong style={{ fontSize: 14 }}>{s.name}</Text>
+                    </Space>
+                  }
+                >
+                  <Paragraph type="secondary" style={{ fontSize: 12, minHeight: 48, marginBottom: 12 }}>
+                    {s.description}
+                  </Paragraph>
+
+                  <div style={{ marginBottom: 12, display: 'flex', gap: 6, flexWrap: 'wrap' }}>
+                    <Badge count={`${s.rowCount} rows`} style={{ backgroundColor: '#108ee9' }} />
+                    <Badge count={`${s.colCount} cols`} style={{ backgroundColor: '#87d068' }} />
+                  </div>
+
+                  <div style={{ marginBottom: 16 }}>
+                    {s.tags.map((tag) => (
+                      <Tag key={tag} style={{ fontSize: 11, marginBottom: 4 }}>{tag}</Tag>
+                    ))}
+                  </div>
+
+                  <Button
+                    type="primary"
+                    block
+                    icon={<ThunderboltOutlined />}
+                    loading={seedingId === s.id}
+                    onClick={() => handleSeedSample(s)}
+                    style={{ background: '#0f172a', borderColor: '#0f172a' }}
+                  >
+                    Load & Analyze
+                  </Button>
+                </Card>
+              </Col>
+            ))}
+          </Row>
+        )}
       </Modal>
 
       {/* EXPLORE & ML PATTERNS DRAWER */}

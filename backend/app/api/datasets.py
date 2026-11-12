@@ -145,6 +145,38 @@ async def upload_dataset_file(
     return JSONResponse(content=_serialize_dataset(dataset), status_code=201)
 
 
+@router.get("/samples")
+async def list_sample_datasets(
+    current_user: User = Depends(get_current_user)
+):
+    """List pre-loaded demo datasets available for 1-click exploration."""
+    catalog = DatasetService.get_sample_catalog()
+    return JSONResponse(content=_sanitize(catalog))
+
+
+@router.post("/sample/{sample_id}", status_code=status.HTTP_201_CREATED)
+async def seed_sample_dataset(
+    sample_id: str,
+    workspace_id: Optional[str] = None,
+    db: AsyncSession = Depends(get_db),
+    current_user: User = Depends(get_current_user)
+):
+    """
+    Seed a pre-loaded demo dataset into user's workspace.
+    Profiles schema, computes quality health score, and runs ML pattern recognition.
+    """
+    if not workspace_id:
+        workspace_id = await _get_or_create_default_workspace(db, current_user)
+
+    dataset = await DatasetService.create_from_sample(
+        db=db,
+        workspace_id=workspace_id,
+        user_id=str(current_user.id),
+        sample_id=sample_id
+    )
+    return JSONResponse(content=_serialize_dataset(dataset), status_code=201)
+
+
 @router.get("/{id}")
 async def get_dataset(
     id: str,

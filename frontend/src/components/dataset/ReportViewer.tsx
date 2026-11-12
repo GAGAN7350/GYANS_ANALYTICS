@@ -1,5 +1,13 @@
-import React from 'react';
-import { Typography, theme, Divider } from 'antd';
+import React, { useState } from 'react';
+import { Typography, theme, Divider, Space, Button, Tag, Tooltip, message } from 'antd';
+import {
+  CopyOutlined,
+  CheckOutlined,
+  DownloadOutlined,
+  PrinterOutlined,
+  ThunderboltOutlined,
+  ClockCircleOutlined,
+} from '@ant-design/icons';
 import { useUiStore } from '@/stores/uiStore';
 
 const { Title, Text, Paragraph } = Typography;
@@ -7,6 +15,8 @@ const { Title, Text, Paragraph } = Typography;
 interface ReportViewerProps {
   markdown: string;
   tier?: 'beginner' | 'pro' | 'ultra_pro';
+  datasetName?: string;
+  reportTitle?: string;
 }
 
 function renderInlineText(text: string, isDark: boolean): React.ReactNode[] {
@@ -60,13 +70,80 @@ function renderInlineText(text: string, isDark: boolean): React.ReactNode[] {
   });
 }
 
-const ReportViewer: React.FC<ReportViewerProps> = ({ markdown }) => {
+const TIER_METADATA: Record<string, { label: string; color: string; desc: string }> = {
+  beginner: {
+    label: 'Beginner Executive',
+    color: 'blue',
+    desc: 'Level 1: High-Level Overview & Actionable Highlights',
+  },
+  pro: {
+    label: 'Pro Analytical',
+    color: 'purple',
+    desc: 'Level 2: Strategic Diagnostics & Metric Correlations',
+  },
+  ultra_pro: {
+    label: 'Ultra-Pro Quantitative',
+    color: 'gold',
+    desc: 'Level 3: Mathematical Proofs, Loss Functions & Rigorous Formulations',
+  },
+};
+
+const ReportViewer: React.FC<ReportViewerProps> = ({
+  markdown,
+  tier = 'pro',
+  datasetName = 'Dataset',
+  reportTitle,
+}) => {
   const { token } = theme.useToken();
   const isDark = useUiStore((state) => state.theme === 'dark');
+  const [copied, setCopied] = useState(false);
 
   if (!markdown) {
     return <Text type="secondary">No content available.</Text>;
   }
+
+  const wordCount = markdown.split(/\s+/).filter(Boolean).length;
+  const readingTimeMin = Math.max(1, Math.ceil(wordCount / 180));
+  const tierInfo = TIER_METADATA[tier] || TIER_METADATA.pro;
+  const currentDateStr = new Date().toLocaleDateString(undefined, {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+  });
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(markdown);
+      setCopied(true);
+      message.success('Report markdown copied to clipboard.');
+      setTimeout(() => setCopied(false), 2500);
+    } catch {
+      message.error('Failed to copy to clipboard.');
+    }
+  };
+
+  const handleDownloadMd = () => {
+    try {
+      const blob = new Blob([markdown], { type: 'text/markdown;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const safeName = datasetName.replace(/[^a-zA-Z0-9_-]/g, '_');
+      const filename = `${safeName}_${tier}_Executive_Report.md`;
+      link.setAttribute('href', url);
+      link.setAttribute('download', filename);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+      message.success(`Saved report as ${filename}`);
+    } catch {
+      message.error('Failed to export Markdown file.');
+    }
+  };
+
+  const handlePrintPdf = () => {
+    window.print();
+  };
 
   const lines = markdown.split('\n');
   const elements: React.ReactNode[] = [];
@@ -83,7 +160,12 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ markdown }) => {
 
     // 1. Horizontal rule
     if (line === '---' || line === '***') {
-      elements.push(<Divider key={`hr-${i}`} style={{ margin: '18px 0', borderColor: isDark ? '#334155' : '#e2e8f0' }} />);
+      elements.push(
+        <Divider
+          key={`hr-${i}`}
+          style={{ margin: '18px 0', borderColor: isDark ? '#334155' : '#e2e8f0' }}
+        />
+      );
       i++;
       continue;
     }
@@ -95,7 +177,7 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ markdown }) => {
           key={`h1-${i}`}
           level={2}
           style={{
-            marginTop: 4,
+            marginTop: 8,
             marginBottom: 12,
             color: isDark ? '#f8fafc' : '#0f172a',
             fontWeight: 700,
@@ -115,7 +197,7 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ markdown }) => {
           key={`h2-${i}`}
           level={3}
           style={{
-            marginTop: 20,
+            marginTop: 22,
             marginBottom: 10,
             color: isDark ? '#f1f5f9' : '#1e293b',
             fontWeight: 600,
@@ -151,14 +233,15 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ markdown }) => {
 
     // 3. Mathematical proof block ($$ ... $$)
     if (line.startsWith('$$')) {
-      const mathContent = line.endsWith('$$') && line.length > 2
-        ? line.slice(2, -2).trim()
-        : line.slice(2).trim();
+      const mathContent =
+        line.endsWith('$$') && line.length > 2
+          ? line.slice(2, -2).trim()
+          : line.slice(2).trim();
       elements.push(
         <div
           key={`math-${i}`}
           style={{
-            margin: '12px 0',
+            margin: '14px 0',
             padding: '12px 18px',
             background: isDark ? '#0f172a' : '#f8fafc',
             border: `1px solid ${isDark ? '#312e81' : '#cbd5e1'}`,
@@ -331,16 +414,136 @@ const ReportViewer: React.FC<ReportViewerProps> = ({ markdown }) => {
   }
 
   return (
-    <div
-      style={{
-        padding: '16px 20px',
-        background: isDark ? '#141414' : '#ffffff',
-        borderRadius: 8,
-        border: `1px solid ${isDark ? '#262626' : '#f0f0f0'}`,
-        color: token.colorText,
-      }}
-    >
-      {elements}
+    <div>
+      {/* 1-Click Executive Export Action Bar (Hidden during Print) */}
+      <div
+        className="no-print"
+        style={{
+          display: 'flex',
+          flexWrap: 'wrap',
+          alignItems: 'center',
+          justifyContent: 'space-between',
+          gap: 12,
+          padding: '12px 16px',
+          marginBottom: 16,
+          background: isDark ? '#1e293b' : '#f8fafc',
+          border: `1px solid ${isDark ? '#334155' : '#e2e8f0'}`,
+          borderRadius: 8,
+        }}
+      >
+        <Space size="middle" wrap>
+          <Tag color={tierInfo.color} icon={<ThunderboltOutlined />} style={{ padding: '2px 8px' }}>
+            {tierInfo.label}
+          </Tag>
+          <Space size={6} style={{ color: isDark ? '#94a3b8' : '#64748b', fontSize: 13 }}>
+            <ClockCircleOutlined />
+            <span>~{readingTimeMin} min read ({wordCount} words)</span>
+          </Space>
+        </Space>
+
+        <Space size="small">
+          <Tooltip title="Copy full report markdown to clipboard">
+            <Button
+              size="small"
+              icon={copied ? <CheckOutlined style={{ color: '#52c41a' }} /> : <CopyOutlined />}
+              onClick={handleCopy}
+            >
+              {copied ? 'Copied' : 'Copy Markdown'}
+            </Button>
+          </Tooltip>
+          <Tooltip title="Download as raw Markdown file (.md)">
+            <Button
+              size="small"
+              icon={<DownloadOutlined />}
+              onClick={handleDownloadMd}
+            >
+              Download .md
+            </Button>
+          </Tooltip>
+          <Tooltip title="Print report or save as executive PDF dossier">
+            <Button
+              size="small"
+              type="primary"
+              icon={<PrinterOutlined />}
+              style={{
+                background: isDark ? '#2563eb' : '#0f172a',
+                borderColor: isDark ? '#2563eb' : '#0f172a',
+              }}
+              onClick={handlePrintPdf}
+            >
+              Export / Print PDF
+            </Button>
+          </Tooltip>
+        </Space>
+      </div>
+
+      {/* Main Formatted Report Container (Printable) */}
+      <div
+        className="printable-report"
+        style={{
+          padding: '24px 28px',
+          background: isDark ? '#141414' : '#ffffff',
+          borderRadius: 8,
+          border: `1px solid ${isDark ? '#262626' : '#f0f0f0'}`,
+          color: token.colorText,
+          boxShadow: isDark ? '0 1px 3px rgba(0,0,0,0.4)' : '0 1px 3px rgba(0,0,0,0.05)',
+        }}
+      >
+        {/* Printable Executive Document Header */}
+        <div
+          style={{
+            borderBottom: `2px solid ${isDark ? '#334155' : '#0f172a'}`,
+            paddingBottom: 14,
+            marginBottom: 20,
+          }}
+        >
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+            <div>
+              <div
+                style={{
+                  fontSize: 11,
+                  letterSpacing: '1.2px',
+                  fontWeight: 700,
+                  textTransform: 'uppercase',
+                  color: isDark ? '#60a5fa' : '#2563eb',
+                  marginBottom: 4,
+                }}
+              >
+                GYAN Analytics Intelligence Platform
+              </div>
+              <h1
+                style={{
+                  margin: 0,
+                  fontSize: 24,
+                  fontWeight: 700,
+                  color: isDark ? '#f8fafc' : '#0f172a',
+                }}
+              >
+                {reportTitle || `${datasetName} Executive Intelligence Dossier`}
+              </h1>
+            </div>
+            <div style={{ textAlign: 'right' }}>
+              <div
+                style={{
+                  fontSize: 10,
+                  fontWeight: 600,
+                  letterSpacing: '0.8px',
+                  textTransform: 'uppercase',
+                  color: isDark ? '#94a3b8' : '#64748b',
+                }}
+              >
+                Classification: Confidential
+              </div>
+              <div style={{ fontSize: 12, color: isDark ? '#cbd5e1' : '#475569', marginTop: 2 }}>
+                Generated: {currentDateStr}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Dynamic Parsed Content Elements */}
+        {elements}
+      </div>
     </div>
   );
 };

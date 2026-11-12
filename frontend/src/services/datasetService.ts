@@ -8,6 +8,16 @@ export interface DatasetPreviewData {
   preview_count: number;
 }
 
+export interface SampleDatasetMeta {
+  id: string;
+  name: string;
+  category: string;
+  description: string;
+  rowCount: number;
+  colCount: number;
+  tags: string[];
+}
+
 export interface ChartDataResponse {
   datasetId: string;
   chartType: 'bar' | 'line' | 'pie' | 'scatter' | 'histogram';
@@ -132,5 +142,16 @@ export const datasetService = {
 
   delete: async (id: string): Promise<void> => {
     await api.delete(`/datasets/${id}`);
+  },
+
+  listSamples: async (): Promise<SampleDatasetMeta[]> => {
+    const response = await api.get<SampleDatasetMeta[]>('/datasets/samples');
+    return response.data;
+  },
+
+  seedSample: async (sampleId: string, workspaceId?: string): Promise<Dataset> => {
+    const params = workspaceId ? { workspace_id: workspaceId } : {};
+    const response = await api.post<Dataset>(`/datasets/sample/${sampleId}`, null, { params });
+    return response.data;
   },
 };

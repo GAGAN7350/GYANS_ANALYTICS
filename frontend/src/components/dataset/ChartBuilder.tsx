@@ -195,7 +195,7 @@ const ChartBuilder: React.FC<ChartBuilderProps> = ({ datasetId }) => {
   // Initial auto-load
   useEffect(() => {
     fetchChartData();
-  }, [datasetId]); // eslint-disable-line react-hooks/exhaustive-deps
+  }, [datasetId]);
 
   const handleChartTypeChange = (val: string) => {
     setSelectedChart(val);

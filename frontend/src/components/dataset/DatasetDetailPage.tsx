@@ -42,6 +42,7 @@ import { Dataset } from '@/types';
 import ChartBuilder from './ChartBuilder';
 import TemplateStudioModal from './TemplateStudioModal';
 import ReportViewer from './ReportViewer';
+import ReportVisuals from './ReportVisuals';
 
 const { Title, Text, Paragraph } = Typography;
 const { Option } = Select;
@@ -92,6 +93,7 @@ const DatasetDetailPage: React.FC = () => {
       .get(id)
       .then((d) => {
         setDataset(d);
+        datasetService.patterns(d.id).then(setPatterns).catch(() => {});
         if (searchParams.get('setup') !== 'true') {
           handleGenerateDefaultReport(d.id);
         }
@@ -461,11 +463,16 @@ const DatasetDetailPage: React.FC = () => {
                   </Row>
                 }
               >
-                {/* Formatted Theme-Aware Report Viewer */}
+                {/* Formatted Theme-Aware Report Viewer with 1-Click Export Toolbar */}
                 <ReportViewer
                   markdown={activeReport.markdown}
                   tier={activeReport.tier}
+                  datasetName={dataset?.name}
+                  reportTitle={`${dataset?.name || 'Dataset'} Executive Intelligence Report`}
                 />
+
+                {/* Embedded ML Diagnostics & Visual Intelligence */}
+                <ReportVisuals patterns={patterns} loading={loadingPatterns} />
 
                 {/* Telemetry / Quality Feedback Bar */}
                 <Card

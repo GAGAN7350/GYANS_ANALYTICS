@@ -17,6 +17,43 @@ from app.services.ml_engine.decision_engine import DecisionEngine
 UPLOAD_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "uploads"))
 os.makedirs(UPLOAD_DIR, exist_ok=True)
 
+DEMO_DATA_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "demo_data"))
+
+SAMPLE_DATASETS: Dict[str, Dict[str, Any]] = {
+    "retail_sales": {
+        "id": "retail_sales",
+        "name": "Global Retail & E-Commerce Performance",
+        "category": "Retail & E-Commerce",
+        "filename": "retail_sales_sample.csv",
+        "description": "Multi-category transactional ledger tracking revenue, discounting strategy, and profitability margins across customer cohorts.",
+        "tags": ["Revenue", "Margin", "Discounts", "Segments"],
+    },
+    "clinical_health": {
+        "id": "clinical_health",
+        "name": "Clinical Biometrics & Metabolic Health",
+        "category": "Healthcare & Life Sciences",
+        "filename": "clinical_health_sample.csv",
+        "description": "Patient metabolic health markers examining fasting glucose, blood pressure, BMI, and physical activity risk tiers.",
+        "tags": ["Glucose", "Blood Pressure", "BMI", "Risk Tier"],
+    },
+    "fintech_fraud": {
+        "id": "fintech_fraud",
+        "name": "FinTech Fraud Detection & Risk Scoring",
+        "category": "FinTech & Payments",
+        "filename": "fintech_fraud_sample.csv",
+        "description": "High-velocity financial transaction stream with latency metrics, device trust scoring, and anomalous behavior flags.",
+        "tags": ["Fraud Detection", "Risk Scoring", "Latency", "Distance"],
+    },
+    "saas_subscription": {
+        "id": "saas_subscription",
+        "name": "B2B SaaS Growth & Churn Analytics",
+        "category": "Software & Subscription",
+        "filename": "saas_subscription_sample.csv",
+        "description": "Account retention metrics examining Monthly Recurring Revenue (MRR), seat utilization, support tickets, and churn risk.",
+        "tags": ["MRR", "Churn Risk", "NPS", "Seat Expansion"],
+    },
+}
+
 # ---------------------------------------------------------------------------
 # FORMAT REGISTRY
 # Add a new format by adding one entry here — no other code changes needed.
@@ -505,3 +542,133 @@ class DatasetService:
             "total_rows": int(len(df)),
             "preview_count": int(len(rows))
         }
+
+    @staticmethod
+    def get_sample_catalog() -> List[Dict[str, Any]]:
+        """Returns catalog of pre-loaded demo datasets with stats."""
+        catalog = []
+        for key, info in SAMPLE_DATASETS.items():
+            file_path = os.path.join(DEMO_DATA_DIR, info["filename"])
+            row_count = 0
+            col_count = 0
+            if os.path.exists(file_path):
+                try:
+                    df = pd.read_csv(file_path)
+                    row_count = len(df)
+                    col_count = len(df.columns)
+                except Exception:
+                    pass
+            catalog.append({
+                "id": key,
+                "name": info["name"],
+                "category": info["category"],
+                "description": info["description"],
+                "rowCount": row_count,
+                "colCount": col_count,
+                "tags": info["tags"],
+            })
+        return catalog
+
+    @staticmethod
+    async def create_from_sample(
+        db: AsyncSession,
+        workspace_id: str,
+        user_id: str,
+        sample_id: str
+    ) -> Dataset:
+        """Seeds a pre-loaded sample dataset into the target workspace."""
+        import shutil
+
+        if sample_id not in SAMPLE_DATASETS:
+            raise HTTPException(
+                status_code=404,
+                detail=f"Sample dataset '{sample_id}' not found. Available: {', '.join(SAMPLE_DATASETS.keys())}"
+            )
+
+        info = SAMPLE_DATASETS[sample_id]
+        src_path = os.path.join(DEMO_DATA_DIR, info["filename"])
+        if not os.path.exists(src_path):
+            raise HTTPException(
+                status_code=500,
+                detail=f"Sample data file '{info['filename']}' not found on server."
+            )
+
+        unique_filename = f"{uuid.uuid4()}_{info['filename']}"
+        saved_file_path = os.path.join(UPLOAD_DIR, unique_filename)
+
+        try:
+            shutil.copyfile(src_path, saved_file_path)
+        except Exception as e:
+            raise HTTPException(status_code=500, detail=f"Failed to stage sample file: {str(e)}")
+
+        df = pd.read_csv(saved_file_path)
+        df.columns = [str(c).strip() for c in df.columns]
+
+        # 1. Run Data Health & Decisions
+        health_info = DecisionEngine.calculate_data_health(df)
+
+        # 2. Run Machine Learning Pattern Recognition
+        ml_patterns = PatternRecognitionEngine.analyze_dataset_patterns(df)
+
+        # 3. Create Dataset Record
+        dataset = Dataset(
+            id=str(uuid.uuid4()),
+            workspace_id=workspace_id,
+            name=info["name"],
+            description=f"{info['description']} (Pre-loaded Demo: {len(df)} rows, {len(df.columns)} columns)",
+            source_type="sample_demo",
+            file_path=saved_file_path,
+            row_count=int(len(df)),
+            status="ready",
+            created_by=user_id,
+            connection_config={
+                "original_filename": info["filename"],
+                "health": health_info,
+                "ml_patterns": ml_patterns,
+                "sample_id": sample_id
+            }
+        )
+        db.add(dataset)
+        await db.flush()
+
+        # 4. Generate & Save Column Metadata
+        for col_name in df.columns:
+            series = df[col_name]
+            if pd.api.types.is_numeric_dtype(series):
+                col_type = "number"
+            elif pd.api.types.is_datetime64_any_dtype(series):
+                col_type = "datetime"
+            elif pd.api.types.is_bool_dtype(series):
+                col_type = "boolean"
+            else:
+                col_type = "string"
+
+            semantics = DecisionEngine.classify_column_semantics(col_name, series)
+            samples = [str(x) for x in series.dropna().head(5).tolist()]
+
+            stats = {}
+            if col_type == "number" and not series.dropna().empty:
+                stats = {
+                    "min": float(series.min()) if not pd.isna(series.min()) else None,
+                    "max": float(series.max()) if not pd.isna(series.max()) else None,
+                    "mean": float(round(series.mean(), 2)) if not pd.isna(series.mean()) else None,
+                    "median": float(round(series.median(), 2)) if not pd.isna(series.median()) else None,
+                }
+
+            col_meta = ColumnMetadata(
+                id=str(uuid.uuid4()),
+                dataset_id=dataset.id,
+                name=col_name,
+                data_type=col_type,
+                is_nullable=bool(series.isna().any()),
+                sample_values=samples,
+                stats={
+                    "numeric_stats": stats,
+                    "semantics": semantics
+                }
+            )
+            db.add(col_meta)
+
+        await db.commit()
+        await db.refresh(dataset)
+        return dataset
